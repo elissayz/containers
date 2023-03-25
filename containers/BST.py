@@ -10,7 +10,8 @@ from containers.BinaryTree import BinaryTree, Node
 class BST(BinaryTree):
     '''
     The BST is a superclass of BinaryTree.
-    That means that the BST class "inherits" all of the methods from BinaryTree,
+    That means that the BST class "inherits" all
+    of the methods from BinaryTree,
     and we don't have to reimplement them.
     '''
 
@@ -121,8 +122,14 @@ class BST(BinaryTree):
 
         HINT:
         Repeatedly call the insert method.
-        You cannot get this method to work correctly until you have gotten insert to work correctly.
+        You cannot get this method to work correctly until
+        you have gotten insert to work correctly.
         '''
+        for x in xs:
+            if self.root:
+                BST._insert(self.root, x)
+            else:
+                self.root = Node(x)
 
     def __contains__(self, value):
         '''
@@ -137,6 +144,10 @@ class BST(BinaryTree):
         FIXME:
         Implement this function.
         '''
+        if not self.root:
+            return None
+        else:
+            return BST._find(value, self.root)
 
     @staticmethod
     def _find(value, node):
@@ -144,20 +155,33 @@ class BST(BinaryTree):
         FIXME:
         Implement this function.
         '''
+        if value == node.value:
+            return True
+        if value < node.value:
+            if node.left:
+                return BST._find(value, node.left)
+            else:
+                return False
+        if value > node.value:
+            if node.right:
+                return BST._find(value, node.right)
+            else:
+                return False
 
     def find_smallest(self):
         '''
         Returns the smallest value in the tree.
         '''
-        if self.root is None:
-            raise ValueError('Nothing in tree')
+        if not self.root:
+            return None
         else:
             return BST._find_smallest(self.root)
 
     @staticmethod
     def _find_smallest(node):
         '''
-        This is a helper function for find_smallest and not intended to be called directly by the user.
+        This is a helper function for find_smallest and not
+        intended to be called directly by the user.
         '''
         assert node is not None
         if node.left is None:
@@ -175,6 +199,18 @@ class BST(BinaryTree):
         HINT:
         Follow the pattern of the _find_smallest function.
         '''
+        if not self.root:
+            return None
+        else:
+            return BST._find_largest(self.root)
+
+    @staticmethod
+    def _find_largest(node):
+        assert node is not None
+        if not node.right:
+            return node.value
+        else:
+            return BST._find_largest(node.right)
 
     def remove(self, value):
         '''
@@ -191,6 +227,31 @@ class BST(BinaryTree):
         HINT:
         Use a recursive helper function.
         '''
+        self.root = BST._remove(value, self.root)
+
+        @staticmethod
+        def _remove(value, node):
+            if node is None:
+                return node
+            elif value < node.value:
+                node.left = BST._remove(value, node.left)
+                return node
+            elif value > node.value:
+                node.right = BST._remove(value, node.right)
+                return node
+            else:
+                if node.left is None and node.right is None:
+                    node = None
+                    return node
+                elif node.left is None:
+                    return node.right
+                elif node.right is None:
+                    return node.left
+                else:
+                    min_node_value = BST._find_smallest(node.right)
+                    node.value = min_node_value
+                    node.right = BST._remove(min_node_value, node.right)
+                    return node
 
     def remove_list(self, xs):
         '''
@@ -202,7 +263,7 @@ class BST(BinaryTree):
         HINT:
         See the insert_list function.
         '''
-        for i in xs:
+        for x in xs:
             self.root = BST._remove(x, self.root)
 
         def __iter__(self):
