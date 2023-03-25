@@ -265,15 +265,15 @@ class BST(BinaryTree):
         for x in xs:
             self.root = BST._remove(x, self.root)
 
-        def __iter__(self):
-            self.index = 0
-            self.list = self.to_list('inorder')
-            return self
+    def __iter__(self):
+        self.index = 0
+        self.list = self.to_list('inorder')
+        return self
 
-        def __next__(self):
-            if self.index < super().__len__():
-                value = self.list[self.index]
-                self.index += 1
-                return value
-            else:
-                raise StopIteration()
+    def __next__(self):    
+        if self.index < super().__len__():
+            value = self.list[self.index]
+            self.index += 1
+            return value
+        else:
+            raise StopIteration()
