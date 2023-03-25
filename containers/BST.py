@@ -172,10 +172,10 @@ class BST(BinaryTree):
         '''
         Returns the smallest value in the tree.
         '''
-        if not self.root:
-            return None
-        else:
+        if self.root:
             return BST._find_smallest(self.root)
+        else:
+            raise ValueError('Nothing in tree')
 
     @staticmethod
     def _find_smallest(node):
@@ -184,7 +184,7 @@ class BST(BinaryTree):
         intended to be called directly by the user.
         '''
         assert node is not None
-        if node.left is None:
+        if not node.left:
             return node.value
         else:
             return BST._find_smallest(node.left)
@@ -199,10 +199,10 @@ class BST(BinaryTree):
         HINT:
         Follow the pattern of the _find_smallest function.
         '''
-        if not self.root:
-            return None
-        else:
+        if self.root:
             return BST._find_largest(self.root)
+        else:
+            raise ValueError('Nothing in tree')
 
     @staticmethod
     def _find_largest(node):
@@ -240,9 +240,8 @@ class BST(BinaryTree):
                 node.right = BST._remove(value, node.right)
                 return node
             else:
-                if node.left is None and node.right is None:
-                    node = None
-                    return node
+                if not node.left and not node.right:
+                    return None
                 elif node.left is None:
                     return node.right
                 elif node.right is None:
