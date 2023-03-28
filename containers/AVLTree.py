@@ -84,7 +84,6 @@ class AVLTree():
             return new_root
         return old_root
 
-
     @staticmethod
     def _right_rotate(node):
         '''
