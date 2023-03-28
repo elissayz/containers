@@ -158,6 +158,7 @@ class AVLTree(BST):
                 return AVLTree._left_rotate(node)
         return node
 
+    @staticmethod
     def _rebalance(node):
         '''
         There are no test cases for the rebalance function,
