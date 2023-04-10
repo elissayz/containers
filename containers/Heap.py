@@ -76,7 +76,7 @@ class Heap(BinaryTree):
             ret &= node.value <= node.left.value
             ret &= Heap._is_heap_satisfied(node.left)
         if node.right:
-            ret &= node.value <= node.left.value
+            ret &= node.value <= node.right.value
             ret &= Heap._is_heap_satisfied(node.right)
         return ret
 
@@ -107,6 +107,7 @@ class Heap(BinaryTree):
         '''
         self.num_nodes += 1
         binary_str = str(bin(self.num_nodes))[3:]
+
         if self.root is None:
             self.root = Node(value)
         else:
