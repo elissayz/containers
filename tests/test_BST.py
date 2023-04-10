@@ -164,8 +164,10 @@ def test__BST_find_largest(xs):
 def test__BST_remove1(xs):
     '''
     This tests the remove function.
-    In order to test the remove function, we must be able to generate valid BSTs.
-    Therefore, you must have all the insert functionality completed before this test can pass.
+    In order to test the remove function, we must be
+    able to generate valid BSTs.
+    Therefore, you must have all the insert functionality
+    completed before this test can pass.
     '''
     xs = list(set(xs))
     bst = BST(xs)
@@ -289,10 +291,14 @@ def test__BST_iterable_1():
     Iterating over the tree should give the results in sorted order.
 
     HINT:
-    Currently, the BST class is not iterable because it does not define the __iter__ method.
+    Currently, the BST class is not iterable because it does not define
+    the __iter__ method.
     Therefore, these tests all fail.
-    You must define an appropriate __iter__ method in order to make these tests pass.
-    I encourage you to think carefully about how you can reuse your previously implemented functions to implement the iterable interface.
+    You must define an appropriate __iter__ method in order
+    to make these tests pass.
+    I encourage you to think carefully about how you can
+    reuse your previously implemented functions to implement
+    the iterable interface.
     '''
     xs = [1, 2, 3, 4, 5]
     bst = BST(xs)
