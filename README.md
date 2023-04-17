@@ -6,8 +6,5 @@ Build status:
 1. [![](https://github.com/elissayz/containers/workflows/tests-range/badge.svg)](https://github.com/elissayz/containers/actions?query=workflow%3Atests-range)
 1. [![](https://github.com/elissayz/containers/workflows/tests-BST/badge.svg)](https://github.com/elissayz/containers/actions?query=workflow%3Atests-BST)
 1. [![](https://github.com/elissayz/containers/workflows/tests-BinaryTree/badge.svg)](https://github.com/elissayz/containers/actions?query=workflow%3Atests-BinaryTree)
-<<<<<<< HEAD
 1. [![](https://github.com/elissayz/containers/workflows/tests-AVLTree/badge.svg)](https://github.com/elissayz/containers/actions?query=workflow%3Atests-AVLTree)
-=======
 1. [![](https://github.com/elissayz/containers/workflows/tests-heap/badge.svg)](https://github.com/elissayz/containers/actions?query=workflow%3Atests-heap)
->>>>>>> heap
